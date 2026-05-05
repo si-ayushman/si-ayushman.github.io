@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ayushman Singh — Information Security Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg-deep: #060918;
+  --bg-mid: #0b1130;
+  --navy: #0d1b4b;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-hover: rgba(255,255,255,0.1);
+  --orb1: #4f46e5;
+  --orb2: #0ea5e9;
+  --orb3: #7c3aed;
+  --orb4: #06b6d4;
+  --accent: #38bdf8;
+  --accent2: #818cf8;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --faint: #475569;
+  --font: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── ORBS ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(79,70,229,0.35) 0%, transparent 70%); top: -200px; left: -150px; }
+.orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(14,165,233,0.3) 0%, transparent 70%); top: 20vh; right: -150px; }
+.orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%); bottom: 30vh; left: 10vw; }
+.orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%); bottom: 0; right: 5vw; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4rem;
+  background: rgba(6,9,24,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e2e8f0, #818cf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500;
+  transition: color 0.2s; letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 10rem 4rem 6rem;
+  max-width: 1200px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.25);
+  font-size: 12px; color: var(--accent); font-weight: 500;
+  margin-bottom: 2rem; width: fit-content;
+  letter-spacing: 0.03em;
+}
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:0.6; transform:scale(0.85); }
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 800; line-height: 0.95;
+  letter-spacing: -0.04em; margin-bottom: 1.5rem;
+}
+.name-light { color: #f1f5f9; display: block; }
+.name-grad {
+  display: block;
+  background: linear-gradient(135deg, #818cf8 0%, #38bdf8 50%, #34d399 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  max-width: 580px; color: var(--muted); font-size: 15px;
+  line-height: 1.9; margin-bottom: 3rem; font-weight: 400;
+}
+.hero-desc strong { color: var(--text); font-weight: 600; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 5rem; }
+
+.btn-glow {
+  padding: 0.85rem 2rem; border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+  color: #fff; font-family: var(--font); font-size: 13px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  box-shadow: 0 4px 24px rgba(79,70,229,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,70,229,0.55); }
+
+.btn-glass {
+  padding: 0.85rem 2rem; border-radius: 10px;
+  background: var(--glass); color: var(--text);
+  border: 1px solid var(--glass-border);
+  font-family: var(--font); font-size: 13px; font-weight: 500;
+  text-decoration: none; cursor: pointer;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-glass:hover { background: var(--glass-hover); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: 16px; overflow: hidden;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  max-width: 640px;
+}
+.stat {
+  flex: 1; min-width: 130px;
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid var(--glass-border);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: var(--font-display); font-size: 2rem;
+  font-weight: 800; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #e2e8f0, #818cf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.stat-lbl { font-size: 11px; color: var(--faint); font-weight: 500; margin-top: 5px; letter-spacing: 0.04em; }
+
+/* ── SECTION ── */
+.section {
+  position: relative; z-index: 1;
+  padding: 7rem 4rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.section-tag {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin-bottom: 1rem;
+}
+.section-tag::before {
+  content: ''; width: 28px; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+h2.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  color: #f1f5f9; margin-bottom: 3.5rem;
+}
+
+/* ── GLASS CARD ── */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.glass-card:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-4px);
+}
+
+/* ── ABOUT ── */
+.about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.about-main { padding: 2.5rem; }
+.about-main p { color: var(--muted); margin-bottom: 1.1rem; line-height: 1.9; }
+.about-main strong { color: var(--text); font-weight: 600; }
+.contact-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.ci {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px;
+}
+.ci-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; min-width: 72px;
+}
+.ci a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.ci a:hover { color: var(--accent); }
+.ci span { color: var(--muted); }
+
+.about-side { padding: 2.5rem; }
+.side-heading {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent2); font-weight: 600; margin-bottom: 1.5rem;
+}
+.cert-row {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cert-row:last-child { border-bottom: none; }
+.cert-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(79,70,229,0.3), rgba(14,165,233,0.3));
+  border: 1px solid rgba(129,140,248,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.cert-name { font-size: 13px; color: var(--text); font-weight: 500; }
+.cert-sub { font-size: 11px; color: var(--faint); margin-top: 2px; }
+
+/* ── SKILLS ── */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.skill-card { padding: 1.75rem; position: relative; overflow: hidden; }
+.skill-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--orb1), var(--orb2));
+  border-radius: 2px 2px 0 0;
+}
+.skill-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.skill-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.skill-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 11px; color: var(--muted); font-weight: 500;
+  transition: all 0.2s;
+}
+.skill-card:hover .tag {
+  background: rgba(56,189,248,0.08);
+  border-color: rgba(56,189,248,0.2);
+  color: var(--text);
+}
+
+/* ── PROJECTS ── */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.proj-featured { grid-column: 1 / -1; }
+.proj-card { padding: 2rem; position: relative; overflow: hidden; }
+.proj-glow {
+  position: absolute; width: 150px; height: 150px; border-radius: 50%;
+  filter: blur(50px); pointer-events: none; top: -40px; right: -30px;
+  opacity: 0; transition: opacity 0.4s;
+}
+.proj-card:hover .proj-glow { opacity: 1; }
+.proj-type {
+  display: inline-flex; padding: 4px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+.type-pam { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #a78bfa; }
+.type-cloud { background: rgba(14,165,233,0.15); border: 1px solid rgba(14,165,233,0.3); color: #7dd3fc; }
+.type-risk { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; }
+.proj-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.proj-period { font-size: 11px; color: var(--accent); margin-bottom: 1rem; font-weight: 500; }
+.proj-desc { color: var(--muted); font-size: 13px; line-height: 1.85; }
+
+/* ── EXPERIENCE ── */
+.exp-card { padding: 2.5rem; margin-bottom: 1.25rem; }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem; }
+.exp-role-wrap {}
+.exp-company { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
+.exp-role-title { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-top: 4px; }
+.exp-meta-wrap { text-align: right; }
+.exp-period {
+  display: inline-block; padding: 5px 14px; border-radius: 100px;
+  background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);
+  font-size: 12px; color: var(--accent); font-weight: 500;
+}
+.exp-location { font-size: 12px; color: var(--faint); margin-top: 6px; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.exp-bullets li {
+  display: flex; gap: 12px; align-items: flex-start;
+  color: var(--muted); font-size: 13px; line-height: 1.8;
+}
+.bullet-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  margin-top: 9px; flex-shrink: 0;
+}
+
+/* ── EDUCATION ── */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.edu-card { padding: 2rem; position: relative; overflow: hidden; }
+.edu-top {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 1.5rem;
+}
+.edu-avatar {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 16px; font-family: var(--font-display);
+}
+.avatar-a { background: linear-gradient(135deg, rgba(79,70,229,0.3), rgba(124,58,237,0.3)); border: 1px solid rgba(129,140,248,0.3); color: #a5b4fc; }
+.avatar-b { background: linear-gradient(135deg, rgba(14,165,233,0.3), rgba(6,182,212,0.3)); border: 1px solid rgba(56,189,248,0.3); color: #7dd3fc; }
+.edu-institution { font-weight: 700; font-size: 15px; }
+.edu-loc { font-size: 12px; color: var(--faint); margin-top: 2px; }
+.edu-degree-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.edu-field { font-size: 13px; color: var(--accent2); font-weight: 500; margin-bottom: 8px; }
+.edu-period-tag {
+  display: inline-block; padding: 3px 12px; border-radius: 100px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  font-size: 11px; color: var(--faint); font-weight: 500;
+}
+
+/* ── CONTACT ── */
+.contact-center {
+  max-width: 760px; margin: 0 auto; text-align: center;
+}
+.contact-sub { color: var(--muted); font-size: 15px; line-height: 1.9; margin-bottom: 3rem; }
+.contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; text-align: left; }
+.cc { padding: 1.25rem 1.5rem; }
+.cc-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+.cc a { color: var(--text); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.cc a:hover { color: var(--accent); }
+.cc span { color: var(--muted); font-size: 13px; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem 4rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--faint);
+  max-width: 1200px; margin: 0 auto;
+}
+.footer-grad {
+  background: linear-gradient(135deg, #818cf8, #38bdf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: rgba(129,140,248,0.3); border-radius: 4px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .section, #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .about-wrap, .projects-grid, .edu-grid, .contact-cards { grid-template-columns: 1fr; }
+  .proj-featured { grid-column: 1; }
+  .hero-stats { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid var(--glass-border); }
+  .exp-header { flex-direction: column; }
+  .exp-meta-wrap { text-align: left; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* ── FADE IN ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.hero-badge { animation: fadeUp 0.5s ease both; }
+.hero-name   { animation: fadeUp 0.5s 0.08s ease both; }
+.hero-desc   { animation: fadeUp 0.5s 0.16s ease both; }
+.hero-ctas   { animation: fadeUp 0.5s 0.24s ease both; }
+.hero-stats  { animation: fadeUp 0.5s 0.32s ease both; }
+</style>
+</head>
+<body>
+
+<!-- AMBIENT ORBS -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ayushman Singh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    Open to new opportunities
+  </div>
+  <h1 class="hero-name">
+    <span class="name-light">Ayushman</span>
+    <span class="name-grad">Singh</span>
+  </h1>
+  <p class="hero-desc">
+    <strong>Information Security Specialist</strong> with expertise in cybersecurity operations,
+    threat detection, incident response, and cloud-native security across enterprise environments.
+    Master of Engineering from the University of Windsor.
+  </p>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-glow">Get in touch</a>
+    <a href="#experience" class="btn-glass">View experience</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-val">2+</div>
+      <div class="stat-lbl">Years in Security</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">3</div>
+      <div class="stat-lbl">Major Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">10+</div>
+      <div class="stat-lbl">Security Tools</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">M.Eng</div>
+      <div class="stat-lbl">U of Windsor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-wrap">
+      <div class="glass-card about-main">
+        <p>I'm an <strong>Information Security Specialist</strong> based in Toronto, ON, with a deep background in cybersecurity operations, threat intelligence, and cloud-native security architecture.</p>
+        <p>At <strong>VON Canada</strong>, I led critical security initiatives — from deploying CyberArk Privileged Access Management to architecting a Microsoft 365 cloud migration with full SIEM integration. I thrive at the intersection of strategy and hands-on technical execution.</p>
+        <p>My toolkit spans SIEM platforms, EDR/XDR tools, firewall technologies, penetration testing, and cloud security across AWS and Azure. I'm equally comfortable threat-hunting in logs or presenting risk assessments to stakeholders.</p>
+        <div class="contact-list">
+          <div class="ci"><span class="ci-label">Email</span><a href="mailto:ayushmansingh.careers@gmail.com">ayushmansingh.careers@gmail.com</a></div>
+          <div class="ci"><span class="ci-label">Phone</span><span>+1 226-975-0581</span></div>
+          <div class="ci"><span class="ci-label">Location</span><span>Toronto, ON, Canada</span></div>
+          <div class="ci"><span class="ci-label">LinkedIn</span><a href="https://linkedin.com/in/ayushmansingh0728" target="_blank">ayushmansingh0728</a></div>
+        </div>
+      </div>
+      <div class="glass-card about-side">
+        <div class="side-heading">Certifications &amp; Credentials</div>
+        <div class="cert-row">
+          <div class="cert-icon">🔐</div>
+          <div>
+            <div class="cert-name">CyberArk Privilege Cloud Administration</div>
+            <div class="cert-sub">For Customers · 3 Credits</div>
+          </div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-name">M.Eng — Electrical &amp; Computer Engineering</div>
+            <div class="cert-sub">University of Windsor · 2022–2023</div>
+          </div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-name">B.Eng — Electronics &amp; Communication Eng.</div>
+            <div class="cert-sub">UIET Kurukshetra University · 2016–2020</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background: rgba(255,255,255,0.01);">
+  <div class="section">
+    <div class="section-tag">Expertise</div>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3)">📊</div>
+          <div class="skill-name">SIEM Platforms</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Splunk ES</span>
+          <span class="tag">IBM QRadar</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(14,165,233,0.2);border:1px solid rgba(14,165,233,0.3)">🛡️</div>
+          <div class="skill-name">EDR / XDR / NGAV</div>
+        </div>
+        <div class="tags">
+          <span class="tag">SentinelOne</span>
+          <span class="tag">TrendMicro Vision One</span>
+          <span class="tag">TrendMicro XDR</span>
+          <span class="tag">TrendMicro Apex One</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.3)">🔥</div>
+          <div class="skill-name">Network &amp; Firewall</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Palo Alto Panorama</span>
+          <span class="tag">Cisco FTD</span>
+          <span class="tag">Cisco Firepower IPS</span>
+          <span class="tag">F5 Silverline WAF</span>
+          <span class="tag">Arbor DDoS</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.3)">🦠</div>
+          <div class="skill-name">Vulnerability &amp; Malware</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Rapid7 InsightVM</span>
+          <span class="tag">Qualys VMDR</span>
+          <span class="tag">Cuckoo Sandbox</span>
+          <span class="tag">Joe Sandbox</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.3)">⚔️</div>
+          <div class="skill-name">Penetration Testing</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Burp Suite</span>
+          <span class="tag">Metasploit</span>
+          <span class="tag">Nessus</span>
+        </div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-head">
+          <div class="skill-icon" style="background:rgba(6,182,212,0.2);border:1px solid rgba(6,182,212,0.3)">☁️</div>
+          <div class="skill-name">Cloud Security</div>
+        </div>
+        <div class="tags">
+          <span class="tag">AWS IAM</span>
+          <span class="tag">AWS VPC</span>
+          <span class="tag">CloudWatch</span>
+          <span class="tag">Azure Intune</span>
+          <span class="tag">Azure Event Hub</span>
+          <span class="tag">Azure DLP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section">
+    <div class="section-tag">Work</div>
+    <h2 class="section-title">Key Projects</h2>
+    <div class="projects-grid" style="grid-template-columns:1fr 1fr">
+      <div class="glass-card proj-card proj-featured">
+        <div class="proj-glow" style="background:radial-gradient(circle,rgba(124,58,237,0.5),transparent 70%)"></div>
+        <div class="proj-type type-pam">Privileged Access Management</div>
+        <div class="proj-name">CyberArk Privileged Access Management</div>
+        <div class="proj-period">Mar 2024 – Jun 2024 · VON Canada</div>
+        <p class="proj-desc">Led the deployment of CyberArk Privileged Session Management (PSM) — onboarded service accounts and domain administrator accounts into the vault, configured access control policies, and enabled secure session monitoring. Reduced manual credential handling, introduced automated password rotation, and significantly improved visibility into privileged activity across critical enterprise systems.</p>
+      </div>
+      <div class="glass-card proj-card">
+        <div class="proj-glow" style="background:radial-gradient(circle,rgba(14,165,233,0.5),transparent 70%)"></div>
+        <div class="proj-type type-cloud">Cloud Migration</div>
+        <div class="proj-name">Microsoft 365 Cloud Migration</div>
+        <div class="proj-period">Jul 2024 – Nov 2025 · VON Canada</div>
+        <p class="proj-desc">Contributed to the migration from on-premises infrastructure to Microsoft Office 365. Created and deployed LAPS policies via Intune, established DLP policies, and designed an Azure Event Hub to forward O365 audit logs to the SIEM for continuous monitoring and incident visibility.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: rgba(255,255,255,0.01);">
+  <div class="section">
+    <div class="section-tag">Career</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="glass-card exp-card">
+      <div class="exp-header">
+        <div class="exp-role-wrap">
+          <div class="exp-company">VON Canada</div>
+          <div class="exp-role-title">Information Security Specialist</div>
+        </div>
+        <div class="exp-meta-wrap">
+          <div class="exp-period">Feb 2024 – Nov 2025</div>
+          <div class="exp-location">Ottawa, ON, Canada</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li><div class="bullet-dot"></div><span>Monitored and analyzed security alerts from SIEM, IDS/IPS, EDR, XDR, and firewall logs to identify and investigate potential cybersecurity incidents.</span></li>
+        <li><div class="bullet-dot"></div><span>Conducted real-time threat analysis, prioritized incidents by severity, and initiated appropriate incident response actions.</span></li>
+        <li><div class="bullet-dot"></div><span>Performed malware analysis and reverse engineering using sandboxing, disassembly, and memory forensics to extract Indicators of Compromise (IoCs).</span></li>
+        <li><div class="bullet-dot"></div><span>Developed and maintained Incident Response Playbooks and Standard Operating Procedures for consistent and effective threat handling.</span></li>
+        <li><div class="bullet-dot"></div><span>Executed proactive threat hunting to detect Advanced Persistent Threats (APTs) and emerging vulnerabilities within enterprise networks.</span></li>
+        <li><div class="bullet-dot"></div><span>Collected, analyzed, and correlated cyber threat intelligence (CTI) to produce detailed threat assessment and TTP reports.</span></li>
+        <li><div class="bullet-dot"></div><span>Conducted comprehensive penetration testing and red teaming exercises on systems, networks, and applications to assess security posture.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section">
+    <div class="section-tag">Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="glass-card edu-card">
+        <div class="edu-top">
+          <div class="edu-avatar avatar-a">UW</div>
+          <div>
+            <div class="edu-institution">University of Windsor</div>
+            <div class="edu-loc">Windsor, ON, Canada</div>
+          </div>
+        </div>
+        <div class="edu-degree-name">Master of Engineering</div>
+        <div class="edu-field">Electrical &amp; Computer Engineering</div>
+        <div class="edu-period-tag">Jan 2022 – Apr 2023</div>
+      </div>
+      <div class="glass-card edu-card">
+        <div class="edu-top">
+          <div class="edu-avatar avatar-b">KU</div>
+          <div>
+            <div class="edu-institution">UIET Kurukshetra University</div>
+            <div class="edu-loc">Haryana, India</div>
+          </div>
+        </div>
+        <div class="edu-degree-name">Bachelor of Engineering</div>
+        <div class="edu-field">Electronics &amp; Communication Engineering</div>
+        <div class="edu-period-tag">Aug 2016 – May 2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: rgba(255,255,255,0.01);">
+  <div class="section">
+    <div class="contact-center">
+      <div class="section-tag" style="justify-content:center">Contact</div>
+      <h2 class="section-title" style="margin-bottom:1rem">Let's Connect</h2>
+      <p class="contact-sub">Open to cybersecurity and cloud security opportunities across Canada. Feel free to reach out — I'd love to talk.</p>
+      <div class="contact-cards">
+        <div class="glass-card cc">
+          <div class="cc-label">Email</div>
+          <a href="mailto:ayushmansingh.careers@gmail.com">ayushmansingh.careers@gmail.com</a>
+        </div>
+        <div class="glass-card cc">
+          <div class="cc-label">Phone</div>
+          <span>+1 226-975-0581</span>
+        </div>
+        <div class="glass-card cc">
+          <div class="cc-label">Location</div>
+          <span>Toronto, ON, Canada</span>
+        </div>
+        <div class="glass-card cc">
+          <div class="cc-label">LinkedIn</div>
+          <a href="https://linkedin.com/in/ayushmansingh0728" target="_blank">linkedin.com/in/ayushmansingh0728</a>
+        </div>
+      </div>
+      <a href="mailto:ayushmansingh.careers@gmail.com" class="btn-glow" style="display:inline-block">Send a message</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Ayushman Singh</span>
+  <span class="footer-grad">Information Security Specialist</span>
+</footer>
+
+</body>
+</html>
